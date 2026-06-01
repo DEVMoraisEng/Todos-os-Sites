@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morais Engenharia — Hub</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #dce6ee;
+    color: #1a2e42;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* HEADER */
+  header {
+    background: #1a2e42;
+    padding: 0 32px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-box {
+    background: #fff;
+    border-radius: 6px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    height: 38px;
+  }
+
+  .logo-box img {
+    height: 28px;
+    display: block;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .brand-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .brand-sub {
+    font-size: 10px;
+    color: #7aaac8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+    font-size: 12px;
+    color: #7aaac8;
+    letter-spacing: 0.3px;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 52px 24px 40px;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: #5a8aaa;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 800;
+    color: #1a2e42;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  /* GRID */
+  .grid-wrap {
+    flex: 1;
+    padding: 0 32px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* CARD */
+  .card {
+    background: #1e3a52;
+    border-radius: 12px;
+    padding: 28px 28px 26px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.18s, transform 0.18s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+    opacity: 0;
+    transition: opacity 0.18s;
+  }
+
+  .card-blue::before  { background: #2e86de; }
+  .card-green::before { background: #1cb87e; }
+  .card-amber::before { background: #f5a623; }
+
+  .card:hover { background: #24455f; transform: translateY(-3px); }
+  .card:hover::before { opacity: 1; }
+
+  /* ícone de letra */
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 900;
+    font-style: italic;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .icon-blue  { background: linear-gradient(135deg, #2e86de 0%, #1a5fa0 100%); }
+  .icon-green { background: linear-gradient(135deg, #1cb87e 0%, #0d7a52 100%); }
+  .icon-amber { background: linear-gradient(135deg, #f5a623 0%, #c07a0e 100%); }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .card-subtitle {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .sub-blue  { color: #6db8f5; }
+  .sub-green { color: #4cd9a0; }
+  .sub-amber { color: #f5c76a; }
+
+  .card-stats {
+    display: flex;
+    gap: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 18px;
+    margin-top: auto;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6a97b5;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1a2e42;
+    text-align: center;
+    padding: 16px;
+    font-size: 11px;
+    color: #4a7a9b;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 0 16px; }
+    .grid-wrap { padding: 0 16px 48px; }
+    .hero { padding: 36px 16px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="logo-box">
+      <img
+        src="https://devmoraiseng.github.io/SITE-DE-VENDAS/LOGO.jpg"
+        alt="Morais"
+        onerror="this.style.display='none'"
+      >
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">Morais</span>
+      <span class="brand-sub">Engenharia e Construção</span>
+    </div>
+  </div>
+
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-label">Selecione o sistema</p>
+  <h1 class="hero-title">Painel de Acesso</h1>
+</div>
+
+<!-- CARDS -->
+<div class="grid-wrap">
+  <div class="grid">
+
+    <!-- Análise de Dados -->
+    <a class="card card-blue" href="https://devmoraiseng.github.io/CONTROLES-INTERNOS/index.html" target="_blank" rel="noopener">
+      <div class="card-icon icon-blue">E</div>
+      <div class="card-title">Análise de Dados</div>
+      <div class="card-subtitle sub-blue">Controle Interno</div>
+      <div class="card-stats">
+        <div class="stat-item">
+          <span class="stat-val">4</span>
+          <span class="stat-label">Módulos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">KPI</span>
+          <span class="stat-label">Dashboard</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">ERP</span>
+          <span class="stat-label">Integrado</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Site de Vendas -->
+    <a class="card card-green" href="https://devmoraiseng.github.io/SITE-DE-VENDAS/" target="_blank" rel="noopener">
+      <div class="card-icon icon-green">E</div>
+      <div class="card-title">Central de Vendas</div>
+      <div class="card-subtitle sub-green">Disponibilidades</div>
+      <div class="card-stats">
+        <div class="stat-item">
+          <span class="stat-val">2</span>
+          <span class="stat-label">Cidades</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">9</span>
+          <span class="stat-label">Setores</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">SVG</span>
+          <span class="stat-label">Mapa Lotes</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Mapas Setores -->
+    <a class="card card-amber" href="https://devmoraiseng.github.io/OBRAS-GERAL/index.html" target="_blank" rel="noopener">
+      <div class="card-icon icon-amber">E</div>
+      <div class="card-title">Gestão de Obras</div>
+      <div class="card-subtitle sub-amber">Mapas dos Setores</div>
+      <div class="card-stats">
+        <div class="stat-item">
+          <span class="stat-val">2</span>
+          <span class="stat-label">Cidades</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">Doc</span>
+          <span class="stat-label">Status</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">Obras</span>
+          <span class="stat-label">Prazos</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>Morais Engenharia e Construção &nbsp;·&nbsp; Uso interno</footer>
+
+<script>
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+    'Atualizado: ' + pad(d.getDate()) + '/' + pad(d.getMonth()+1) + '/' + d.getFullYear() +
+    ', ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+</script>
+
+</body>
+</html>
